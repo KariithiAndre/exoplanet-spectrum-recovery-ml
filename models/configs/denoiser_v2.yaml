@@ -1,0 +1,39 @@
+# Spectrum Denoiser V2 Configuration (Transformer)
+
+model:
+  type: "v2"
+  architecture: "transformer"
+  input_dim: 1
+  d_model: 128
+  nhead: 8
+  num_layers: 4
+  dim_feedforward: 512
+  max_seq_length: 2048
+  dropout: 0.1
+
+training:
+  epochs: 150
+  batch_size: 16  # Smaller batch size for transformer
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  scheduler: "cosine_warmup"
+  warmup_epochs: 5
+  patience: 15
+
+data:
+  min_snr: 5
+  max_snr: 150
+  train_split: 0.85
+  wavelength_range: [0.3, 15.0]
+
+augmentation:
+  random_noise: true
+  wavelength_shift: true
+  flux_scaling: true
+  spectral_dropout: 0.1
+
+hardware:
+  use_gpu: true
+  num_workers: 4
+  mixed_precision: true
+  gradient_checkpointing: true  # For memory efficiency

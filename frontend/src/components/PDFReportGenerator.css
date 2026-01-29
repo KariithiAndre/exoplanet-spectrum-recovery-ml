@@ -1,0 +1,509 @@
+/**
+ * PDF Report Generator Styles
+ * 
+ * Scientific report generation interface:
+ * - Preview panel styling
+ * - Configuration form
+ * - Canvas plot preview
+ */
+
+/* ===== Container ===== */
+.pdf-generator {
+  background: #0a0a1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== Header ===== */
+.pdf-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 215, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pdf-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #ffd700;
+  font-weight: 600;
+}
+
+.close-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #888;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 100, 100, 0.2);
+  border-color: rgba(255, 100, 100, 0.3);
+  color: #ff6b6b;
+}
+
+/* ===== Content Layout ===== */
+.pdf-content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ===== Preview Section ===== */
+.preview-section {
+  background: #0a0a1a;
+  padding: 1.5rem;
+}
+
+.preview-section h3 {
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+  color: #888;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.preview-container {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.preview-page {
+  min-height: 400px;
+}
+
+.preview-title-bar {
+  padding-bottom: 1rem;
+  border-bottom: 3px solid #ffd700;
+  margin-bottom: 1rem;
+}
+
+.preview-title {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.preview-target {
+  display: block;
+  font-size: 1rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+.preview-metadata {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: #f5f5f5;
+  border-radius: 6px;
+}
+
+.preview-metadata span {
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.preview-plot {
+  margin-bottom: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.spectrum-preview-canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.preview-molecules {
+  margin-bottom: 1rem;
+}
+
+.preview-molecules h4 {
+  font-size: 0.9rem;
+  color: #333;
+  margin: 0 0 0.5rem 0;
+}
+
+.molecule-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.molecule-chip {
+  padding: 0.35rem 0.75rem;
+  background: linear-gradient(135deg, #00b8d4, #0088cc);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.preview-predictions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.prediction-item {
+  padding: 0.75rem;
+  background: #f8f8f8;
+  border-radius: 6px;
+  border-left: 3px solid #ffd700;
+}
+
+.prediction-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.prediction-value {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+  margin-top: 0.25rem;
+}
+
+.prediction-value.habitability {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ===== Configuration Section ===== */
+.config-section {
+  background: #0a0a1a;
+  padding: 1.5rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.config-section h3 {
+  margin: 0 0 1.5rem 0;
+  font-size: 0.9rem;
+  color: #888;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.config-group {
+  margin-bottom: 1.25rem;
+}
+
+.config-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-bottom: 0.5rem;
+}
+
+.config-group input[type="text"] {
+  width: 100%;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.config-group input[type="text"]:focus {
+  outline: none;
+  border-color: rgba(255, 215, 0, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.config-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ===== Checkbox Grid ===== */
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #ccc;
+  transition: all 0.2s ease;
+}
+
+.checkbox-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.checkbox-item input[type="checkbox"] {
+  accent-color: #ffd700;
+  width: 14px;
+  height: 14px;
+}
+
+/* ===== Radio Groups ===== */
+.radio-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #ccc;
+  transition: all 0.2s ease;
+}
+
+.radio-group label:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.radio-group input[type="radio"] {
+  accent-color: #ffd700;
+}
+
+.radio-group input[type="radio"]:checked + label,
+.radio-group label:has(input[type="radio"]:checked) {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: rgba(255, 215, 0, 0.3);
+  color: #ffd700;
+}
+
+/* ===== Generate Button ===== */
+.generate-btn {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, #ffd700, #ffaa00);
+  border: none;
+  border-radius: 8px;
+  color: #0a0a1a;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.generate-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #ffe033, #ffbb33);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.generate-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.generate-btn.generating {
+  background: linear-gradient(135deg, #888, #666);
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid transparent;
+  border-top-color: #0a0a1a;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .pdf-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .config-section {
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .preview-container {
+    padding: 1rem;
+  }
+  
+  .config-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .pdf-header {
+    padding: 1rem;
+  }
+  
+  .pdf-header h2 {
+    font-size: 1rem;
+  }
+  
+  .preview-section,
+  .config-section {
+    padding: 1rem;
+  }
+  
+  .preview-metadata {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .preview-predictions {
+    grid-template-columns: 1fr;
+  }
+  
+  .radio-group {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* ===== Page Mode (Full Page) ===== */
+.pdf-generator-page {
+  min-height: 100vh;
+  background: #0a0a1a;
+  padding: 2rem;
+}
+
+.pdf-generator-page .pdf-generator {
+  max-width: 1400px;
+}
+
+/* ===== Modal Mode ===== */
+.pdf-generator-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.pdf-generator-modal .pdf-generator {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* ===== Dark Print Preview ===== */
+.preview-container.dark-preview {
+  background: #1a1a2e;
+}
+
+.preview-container.dark-preview .preview-title {
+  color: #fff;
+}
+
+.preview-container.dark-preview .preview-target {
+  color: #aaa;
+}
+
+.preview-container.dark-preview .preview-metadata {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.preview-container.dark-preview .preview-metadata span {
+  color: #ccc;
+}
+
+.preview-container.dark-preview .preview-molecules h4 {
+  color: #ffd700;
+}
+
+.preview-container.dark-preview .prediction-item {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.preview-container.dark-preview .prediction-value {
+  color: #fff;
+}
+
+/* ===== Animation States ===== */
+.pdf-generator {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Tooltip Styles ===== */
+.config-group[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 0;
+  top: 100%;
+  padding: 0.5rem 0.75rem;
+  background: #1a1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: #aaa;
+  white-space: nowrap;
+  z-index: 10;
+}

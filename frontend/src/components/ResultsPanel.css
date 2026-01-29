@@ -1,0 +1,959 @@
+/**
+ * Results Panel Styles
+ * 
+ * Comprehensive styling for analysis results visualization:
+ * - Molecule detection cards with confidence bars
+ * - Planet classification with probability distributions
+ * - Circular habitability gauge with uncertainty
+ * - Uncertainty breakdown charts
+ */
+
+/* ===== Panel Container ===== */
+.results-panel {
+  background: #0a0a1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.results-panel.compact {
+  padding: 1rem;
+}
+
+/* ===== Compact Mode ===== */
+.compact-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.compact-header h3 {
+  font-size: 1rem;
+  color: #fff;
+  margin: 0;
+}
+
+.compact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.compact-stat {
+  text-align: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+}
+
+.compact-stat .stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffd700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.compact-stat .stat-label {
+  display: block;
+  font-size: 0.7rem;
+  color: #666;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+/* ===== Panel Header ===== */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background: rgba(20, 20, 40, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.panel-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.header-badges {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.quality-badge,
+.confidence-badge {
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid;
+}
+
+/* ===== Section Navigation ===== */
+.section-nav {
+  display: flex;
+  background: rgba(20, 20, 40, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-nav button {
+  flex: 1;
+  padding: 1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #888;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.section-nav button:hover {
+  color: #ccc;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.section-nav button.active {
+  color: #ffd700;
+  border-bottom-color: #ffd700;
+  background: rgba(255, 215, 0, 0.05);
+}
+
+/* ===== Section Content ===== */
+.section-content {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+/* ===== Molecules Section ===== */
+.section-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.filter-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.filter-toggle input {
+  accent-color: #ffd700;
+}
+
+.detection-summary {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.molecules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.molecule-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.molecule-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.molecule-card.not-detected {
+  opacity: 0.6;
+}
+
+.molecule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.molecule-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.molecule-formula {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.molecule-name {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.molecule-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.category-badge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.detection-badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.detection-badge.yes {
+  color: #00ff88;
+}
+
+.detection-badge.no {
+  color: #666;
+}
+
+.molecule-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.confidence-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.metric-title {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.molecule-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===== Confidence Bar ===== */
+.confidence-bar-container {
+  width: 100%;
+}
+
+.confidence-bar-track {
+  position: relative;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: visible;
+}
+
+.confidence-uncertainty {
+  position: absolute;
+  top: -2px;
+  height: calc(100% + 4px);
+  border-radius: 6px;
+}
+
+.confidence-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.uncertainty-marker {
+  position: absolute;
+  top: -3px;
+  width: 2px;
+  height: calc(100% + 6px);
+  background: transparent;
+  border-left: 2px dashed;
+  opacity: 0.5;
+}
+
+.confidence-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.confidence-labels .lower-bound,
+.confidence-labels .upper-bound {
+  color: #666;
+}
+
+.confidence-labels .main-value {
+  font-weight: 700;
+}
+
+/* ===== Significance Indicator ===== */
+.significance-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+}
+
+.sigma-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.sigma-stars {
+  display: flex;
+  gap: 2px;
+  font-size: 0.8rem;
+}
+
+.sigma-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ===== Abundance Info ===== */
+.abundance-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.abundance-label {
+  font-size: 0.7rem;
+  color: #666;
+}
+
+.abundance-value {
+  font-size: 0.9rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: #ccc;
+}
+
+.abundance-uncertainty {
+  color: #666;
+  font-size: 0.75rem;
+}
+
+/* ===== Classification Section ===== */
+.primary-classification {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 170, 0, 0.05));
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.primary-icon {
+  font-size: 4rem;
+}
+
+.primary-info {
+  flex: 1;
+}
+
+.primary-type {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffd700;
+  margin-bottom: 0.25rem;
+}
+
+.primary-description {
+  display: block;
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.classification-list h4,
+.classification-chart h4 {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.classification-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.class-icon {
+  font-size: 1.5rem;
+}
+
+.class-info {
+  flex: 1;
+}
+
+.class-type {
+  display: block;
+  font-size: 1rem;
+  color: #ccc;
+  font-weight: 600;
+}
+
+.class-description {
+  display: block;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.class-probability {
+  text-align: right;
+}
+
+.prob-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.prob-range {
+  display: block;
+  font-size: 0.7rem;
+  color: #666;
+}
+
+/* Classification Chart */
+.classification-chart {
+  margin-top: 2rem;
+}
+
+.probability-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.prob-bar-item {
+  display: grid;
+  grid-template-columns: 2rem 1fr 100px;
+  align-items: center;
+  gap: 1rem;
+}
+
+.prob-icon {
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.prob-bar-track {
+  position: relative;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.prob-bar-uncertainty {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: rgba(255, 215, 0, 0.2);
+}
+
+.prob-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffd700, #ffaa00);
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.prob-label {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* ===== Habitability Section ===== */
+.habitability-section {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+}
+
+.habitability-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Circular Gauge */
+.circular-gauge {
+  position: relative;
+}
+
+.gauge-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.gauge-value {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.gauge-uncertainty {
+  display: block;
+  font-size: 1rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+.gauge-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.5rem;
+}
+
+/* Interpretation */
+.habitability-interpretation {
+  max-width: 250px;
+}
+
+.interpretation {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.interpretation .icon {
+  font-size: 1.5rem;
+}
+
+.interpretation.high {
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  color: #ccc;
+}
+
+.interpretation.high strong {
+  color: #00ff88;
+}
+
+.interpretation.medium {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  color: #ccc;
+}
+
+.interpretation.medium strong {
+  color: #ffd700;
+}
+
+.interpretation.low {
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.3);
+  color: #ccc;
+}
+
+.interpretation.low strong {
+  color: #ff4444;
+}
+
+/* Habitability Breakdown */
+.habitability-breakdown {
+  flex: 1;
+}
+
+.habitability-breakdown h4 {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 1.5rem;
+}
+
+/* Metric Bar */
+.metric-bar {
+  margin-bottom: 1.25rem;
+}
+
+.metric-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+.metric-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.metric-uncertainty {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.metric-track {
+  position: relative;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: visible;
+}
+
+.metric-uncertainty-range {
+  position: absolute;
+  top: -2px;
+  height: 12px;
+  border-radius: 6px;
+}
+
+.metric-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+/* ===== Uncertainty Section ===== */
+.uncertainty-overview {
+  margin-bottom: 2rem;
+}
+
+.uncertainty-overview h4 {
+  font-size: 0.9rem;
+  color: #ffd700;
+  margin-bottom: 0.5rem;
+}
+
+.uncertainty-description {
+  font-size: 0.85rem;
+  color: #888;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Uncertainty Chart */
+.uncertainty-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.uncertainty-source {
+  display: grid;
+  grid-template-columns: 1fr auto 50px;
+  align-items: center;
+  gap: 1rem;
+}
+
+.source-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.source-name {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.source-type {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.source-bar {
+  width: 200px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.source-fill {
+  height: 100%;
+  border-radius: 3px;
+  animation: grow-bar 0.5s ease forwards;
+}
+
+@keyframes grow-bar {
+  from { width: 0; }
+}
+
+.source-value {
+  font-size: 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: #888;
+  text-align: right;
+}
+
+.uncertainty-legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Error Propagation */
+.error-propagation {
+  margin-bottom: 2rem;
+}
+
+.error-propagation h4 {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.propagation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.propagation-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+}
+
+.propagation-item.total {
+  grid-column: span 2;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.prop-label {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.prop-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  color: #ccc;
+}
+
+.propagation-item.total .prop-value {
+  color: #ffd700;
+}
+
+/* Confidence Intervals Guide */
+.confidence-intervals h4 {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.ci-explanation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ci-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ci-visual {
+  width: 60px;
+  height: 12px;
+  background: rgba(255, 215, 0, 0.2);
+  border-radius: 6px;
+  position: relative;
+}
+
+.ci-visual::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  background: #ffd700;
+  border-radius: 6px;
+}
+
+.ci-visual.narrow::after { width: 20%; }
+.ci-visual.medium::after { width: 40%; }
+.ci-visual.wide::after { width: 70%; }
+
+.ci-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.ci-text strong {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+.ci-text span {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+/* ===== Panel Footer ===== */
+.panel-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: rgba(20, 20, 40, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.75rem;
+  color: #666;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 900px) {
+  .habitability-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .habitability-main {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .propagation-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .propagation-item.total {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .panel-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .header-badges {
+    flex-wrap: wrap;
+  }
+  
+  .section-nav {
+    overflow-x: auto;
+  }
+  
+  .section-nav button {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+  
+  .molecule-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .molecule-status {
+    align-items: flex-start;
+    flex-direction: row;
+  }
+  
+  .primary-classification {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .primary-info {
+    width: 100%;
+  }
+  
+  .uncertainty-source {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .source-bar {
+    width: 100%;
+  }
+  
+  .compact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

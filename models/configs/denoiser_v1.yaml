@@ -1,0 +1,32 @@
+# Spectrum Denoiser V1 Configuration
+
+model:
+  type: "v1"
+  architecture: "cnn"
+  input_channels: 1
+  base_channels: 64
+  num_residual_blocks: 4
+
+training:
+  epochs: 100
+  batch_size: 32
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  scheduler: "cosine"
+  patience: 10
+
+data:
+  min_snr: 10
+  max_snr: 100
+  train_split: 0.8
+  wavelength_range: [0.3, 15.0]  # microns
+
+augmentation:
+  random_noise: true
+  wavelength_shift: false
+  flux_scaling: true
+  
+hardware:
+  use_gpu: true
+  num_workers: 4
+  mixed_precision: true

@@ -1,0 +1,670 @@
+/**
+ * Research Comparison Page Styles
+ * 
+ * Scientific publication-ready styling:
+ * - Multi-spectrum comparison layout
+ * - Molecule detection matrix
+ * - Summary statistics tables
+ * - Export-ready formatting
+ */
+
+/* ===== Base Layout ===== */
+.research-page {
+  min-height: 100vh;
+  background: #0a0a1a;
+  color: #e0e0e0;
+  font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Header ===== */
+.research-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(20, 20, 40, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.back-link {
+  color: #888;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: #ffd700;
+}
+
+.research-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.export-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.export-btn {
+  padding: 0.6rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: #ccc;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.export-btn:hover:not(:disabled) {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: rgba(255, 215, 0, 0.3);
+  color: #ffd700;
+}
+
+.export-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ===== Main Layout ===== */
+.research-main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+/* ===== Selection Sidebar ===== */
+.selection-sidebar {
+  background: #0a0a1a;
+  padding: 1.5rem;
+  overflow-y: auto;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Spectrum Selector */
+.spectrum-selector {
+  margin-bottom: 2rem;
+}
+
+.selector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.selector-header h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffd700;
+  margin: 0;
+}
+
+.selection-count {
+  font-size: 0.8rem;
+  color: #666;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.selector-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.selector-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.selector-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.selector-item.selected {
+  background: rgba(255, 215, 0, 0.08);
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+.selector-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.selector-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.selector-target {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.selector-meta {
+  display: block;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.selector-hab {
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Plot Options */
+.plot-options {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.plot-options h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.option-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.option-toggle input {
+  accent-color: #ffd700;
+  width: 16px;
+  height: 16px;
+}
+
+/* Color Scheme Selector */
+.color-scheme-selector {
+  margin-top: 1.5rem;
+}
+
+.color-scheme-selector label {
+  display: block;
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 0.75rem;
+}
+
+.scheme-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.scheme-buttons button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  color: #888;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.scheme-buttons button:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.scheme-buttons button.active {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: rgba(255, 215, 0, 0.3);
+  color: #ffd700;
+}
+
+.scheme-preview {
+  display: flex;
+  gap: 2px;
+}
+
+.scheme-preview span {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+/* ===== Main Content ===== */
+.research-content {
+  background: #0a0a1a;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.content-section {
+  margin-bottom: 2rem;
+  background: rgba(20, 20, 40, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 400px;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.empty-state h2 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: #888;
+  font-size: 1rem;
+}
+
+/* ===== Comparison Plot ===== */
+.comparison-plot {
+  width: 100%;
+}
+
+/* ===== Comparison Stats ===== */
+.comparison-stats h3 {
+  font-size: 1rem;
+  color: #ffd700;
+  margin-bottom: 1rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.stat-card {
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.stat-card.wide {
+  grid-column: span 2;
+}
+
+.stat-card .stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffd700;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card .stat-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ===== Molecule Matrix ===== */
+.molecule-matrix h3 {
+  font-size: 1rem;
+  color: #ffd700;
+  margin-bottom: 1rem;
+}
+
+.matrix-container {
+  overflow-x: auto;
+}
+
+.molecule-matrix table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.molecule-matrix th,
+.molecule-matrix td {
+  padding: 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.molecule-matrix th {
+  background: rgba(255, 215, 0, 0.1);
+  color: #ffd700;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.molecule-matrix th:first-child {
+  text-align: left;
+}
+
+.target-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.detection-cell {
+  padding: 0.5rem;
+}
+
+.confidence {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.not-detected-mark {
+  color: #444;
+  font-size: 1.25rem;
+}
+
+.matrix-legend {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.legend-box {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.legend-box.detected {
+  background: rgba(0, 255, 136, 0.6);
+}
+
+.legend-box.not-detected {
+  background: #333;
+}
+
+/* ===== Summary Table ===== */
+.summary-table h3 {
+  font-size: 1rem;
+  color: #ffd700;
+  margin-bottom: 1rem;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.summary-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.summary-table th,
+.summary-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.summary-table th {
+  background: rgba(255, 215, 0, 0.1);
+  color: #ffd700;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.summary-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s ease;
+}
+
+.summary-table th.sortable:hover {
+  background: rgba(255, 215, 0, 0.2);
+}
+
+.sort-indicator {
+  margin-left: 0.25rem;
+}
+
+.summary-table td {
+  color: #ccc;
+}
+
+.summary-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 1200px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .stat-card.wide {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 900px) {
+  .research-main {
+    grid-template-columns: 1fr;
+  }
+  
+  .selection-sidebar {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    max-height: 300px;
+  }
+  
+  .selector-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .plot-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding-top: 1rem;
+  }
+  
+  .plot-options h3 {
+    grid-column: span 3;
+  }
+  
+  .color-scheme-selector {
+    grid-column: span 3;
+    margin-top: 0;
+  }
+  
+  .scheme-buttons {
+    flex-direction: row;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .stat-card.wide {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .research-header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .header-left {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .export-buttons {
+    width: 100%;
+  }
+  
+  .export-btn {
+    flex: 1;
+  }
+  
+  .selector-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .plot-options {
+    grid-template-columns: 1fr;
+  }
+  
+  .plot-options h3 {
+    grid-column: span 1;
+  }
+  
+  .color-scheme-selector {
+    grid-column: span 1;
+  }
+  
+  .scheme-buttons {
+    flex-direction: column;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-card.wide {
+    grid-column: span 1;
+  }
+  
+  .matrix-legend {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* ===== Plotly Customization ===== */
+.comparison-plot .modebar {
+  background: rgba(10, 10, 26, 0.9) !important;
+}
+
+.comparison-plot .modebar-btn {
+  fill: #888 !important;
+}
+
+.comparison-plot .modebar-btn:hover {
+  fill: #ffd700 !important;
+}
+
+/* ===== Print Styles ===== */
+@media print {
+  .research-page {
+    background: #fff;
+    color: #000;
+  }
+  
+  .research-header,
+  .selection-sidebar,
+  .export-buttons {
+    display: none;
+  }
+  
+  .research-main {
+    display: block;
+  }
+  
+  .content-section {
+    break-inside: avoid;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+  }
+  
+  .molecule-matrix th,
+  .summary-table th {
+    background: #f0f0f0;
+    color: #000;
+  }
+  
+  .molecule-matrix td,
+  .summary-table td {
+    color: #000;
+  }
+}

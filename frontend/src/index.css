@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-space-600 hover:bg-space-500 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-space-400 focus:ring-offset-2 focus:ring-offset-space-950;
+  }
+  
+  .btn-secondary {
+    @apply bg-space-800 hover:bg-space-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 border border-space-600;
+  }
+  
+  .card {
+    @apply bg-space-900/50 backdrop-blur-sm border border-space-800 rounded-xl p-6;
+  }
+  
+  .input-field {
+    @apply w-full bg-space-900 border border-space-700 rounded-lg px-4 py-2 text-white placeholder-space-400 focus:outline-none focus:ring-2 focus:ring-space-500 focus:border-transparent;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-space-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-space-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-space-600;
+}
+
+/* Plotly chart customization */
+.js-plotly-plot .plotly .modebar {
+  @apply bg-space-900/80;
+}
